@@ -3,6 +3,8 @@
 #define STB_IMAGE_IMPLEMENTATION
 #include "stb/stb_image.h"
 
+#include "omp.h"
+
 #include <iostream>
 #include "sphere.h"
 #include"camera.h"
@@ -48,6 +50,9 @@ int main()
     camera cam;
 
 	unsigned char *data = new unsigned char[nx * ny * n];
+
+	printf("maxium thread number£º%d\n", omp_get_max_threads());
+#pragma omp parallel for
 	for (int j = ny - 1; j >= 0; j--)
 	{
 		for (int i = 0; i < nx; i++)
@@ -55,7 +60,7 @@ int main()
             vec3 col(0,0,0);
             for (int s = 0; s < ns; s++)
             {
-                  float u = float(i+ _drand48()) / float(nx);
+            float u = float(i+ _drand48()) / float(nx);
             float v = float(ny - 1 - (j+ _drand48())) / float(ny);
             ray r = cam.get_ray(u,v,false);
 			vec3 p = r.point_at_parameter(2.0);
