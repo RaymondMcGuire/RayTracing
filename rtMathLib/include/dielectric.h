@@ -37,7 +37,7 @@ public:
             reflect_prob = 1.0;
         }
 
-        if (_drand48() < reflect_prob)
+        if (Utils::_drand48() < reflect_prob)
         {
             scattered = ray(rec.p, reflected);
         }

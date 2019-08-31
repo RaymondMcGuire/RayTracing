@@ -14,7 +14,7 @@
  vec3 random_not_in_unit_sphere(){
  	vec3 p;
  	do{
- 		p=2.0*vec3(_drand48(),_drand48(),_drand48()) - vec3(1,1,1);
+ 		p=2.0*vec3(Utils::_drand48(),Utils::_drand48(),Utils::_drand48()) - vec3(1,1,1);
  	}while(p.squared_length()>=1.0);
  	return p;
  }
@@ -76,8 +76,8 @@
              vec3 col(0,0,0);
              for (int s = 0; s < ns; s++)
              {
-                   float u = float(i+ _drand48()) / float(nx);
-             float v = float(ny - 1 - (j+ _drand48())) / float(ny);
+                   float u = float(i+ Utils::_drand48()) / float(nx);
+             float v = float(ny - 1 - (j+ Utils::_drand48())) / float(ny);
              ray r = cam.get_ray(u,v, false);
  		vec3 p = r.point_at_parameter(2.0);
  			col+=color(r,world);

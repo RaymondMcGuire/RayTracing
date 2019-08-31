@@ -14,6 +14,13 @@ set(GLOBAL_DIR ${PROJECT_SOURCE_DIR})
 #include_directories("${PROJECT_INCLUDE_DIR}")
 #include_directories("${PROJECT_SOURCE_DIR}")
 
+#OpenMP
+find_package(OpenMP REQUIRED)
+if(OpenMP_FOUND)
+    set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} ${OpenMP_C_FLAGS}")
+    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} ${OpenMP_CXX_FLAGS}")
+endif()
+
 #subproject setting
 add_subdirectory(rtMathLib)
 add_subdirectory(1-1-image)
@@ -22,3 +29,4 @@ add_subdirectory(1-5-hit)
 add_subdirectory(1-8-metal)
 add_subdirectory(1-9-dielectric)
 add_subdirectory(1-final)
+add_subdirectory(2-1-motion-blur)
