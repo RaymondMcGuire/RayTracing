@@ -4,9 +4,16 @@
 #include "vec3.h"
 #include "aabb.h"
 
-static class Utils
+class Utils
 {
 public:
+
+
+
+	static double random_double() {
+		return rand() / (RAND_MAX + 1.0);
+	}
+
 	static double _drand48(void)
 	{
 		long long m = 0x100000000LL;
