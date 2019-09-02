@@ -15,6 +15,7 @@
 #include "metal.h"
 #include "dielectric.h"
 #include "texture.h"
+#include "surface_texture.h"
 
 #include "float.h"
 
@@ -46,12 +47,12 @@ vec3 color(const ray &r, hitable *world, int depth)
 	}
 }
 
-hitable *two_perlin_spheres() {
-    texture *pertext = new noise_texture(4);
-    hitable **list = new hitable*[2];
-    list[0] =  new sphere(vec3(0,-1000, 0), 1000, new lambertian( pertext ));
-    list[1] =  new sphere(vec3(0, 2, 0), 2, new lambertian( pertext ));
-    return new hitable_list(list,2);
+hitable *earth() {
+    int nx, ny, nn;
+    //unsigned char *tex_data = stbi_load("tiled.jpg", &nx, &ny, &nn, 0);
+    unsigned char *tex_data = stbi_load("..\\..\\images\\earthmap.jpg", &nx, &ny, &nn, 0);
+    material *mat =  new lambertian(new image_texture(tex_data, nx, ny));
+    return new sphere(vec3(0,0, 0), 2, mat);
 }
 
 int main()
@@ -64,7 +65,7 @@ int main()
 	int ns = 100;
 	int n = 4;
 
-	hitable *world = two_perlin_spheres();
+	hitable *world = earth();
 
 	vec3 lookfrom(13, 2, 3);
 	vec3 lookat(0, 0, 0);
@@ -107,7 +108,7 @@ int main()
 	}
 
 	cout << "write png to file!" << endl;
-	stbi_write_png("2-4.png", nx, ny, n, data, nx * 4);
+	stbi_write_png("2-5.png", nx, ny, n, data, nx * 4);
 	stbi_image_free(data);
 	return 0;
 }

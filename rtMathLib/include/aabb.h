@@ -1,7 +1,6 @@
 #ifndef AABBH
 #define AABBH
 #include "ray.h"
-#include "hitable.h"
 
 class aabb
 {
