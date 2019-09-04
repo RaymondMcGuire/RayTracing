@@ -8,7 +8,7 @@ vec3 random_in_unit_disk()
     vec3 p;
     do
     {
-        p = 2.0 * vec3(Utils::_drand48(), Utils::_drand48(), 0) - vec3(1, 1, 0);
+        p = 2.0 * vec3(Utils::random_double(), Utils::random_double(), 0) - vec3(1, 1, 0);
     } while (dot(p, p) >= 1.0);
     return p;
 }
@@ -56,7 +56,7 @@ public:
             offset = u * rd.x() + v * rd.y();
         }
 
-        float time = time0 + Utils::_drand48() * (time1 - time0);
+        float time = time0 + Utils::random_double() * (time1 - time0);
 
         return ray(origin + offset, lower_left_corner + s * horizontal + t * vertical - origin - offset, time);
     }

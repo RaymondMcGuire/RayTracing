@@ -41,6 +41,16 @@ public:
 				 fmax(box0.max().z(), box1.max().z()));
 		return aabb(small, big);
 	}
+
+	template<class T> static T saturate_cast(const T value, const T min, const T max) {
+		T v = value;
+		if (v < min)
+			v = min;
+
+		if (v > max)
+			v = max;
+		return v;
+	}
 };
 
 #endif

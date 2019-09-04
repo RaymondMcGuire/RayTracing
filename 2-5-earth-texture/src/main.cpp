@@ -60,8 +60,8 @@ int main()
 	cout.setf(ios::fixed);
 	cout.precision(2);
 
-	int nx = 400;
-	int ny = 200;
+	int nx = 800;
+	int ny = 400;
 	int ns = 100;
 	int n = 4;
 

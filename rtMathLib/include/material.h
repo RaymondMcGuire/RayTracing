@@ -8,8 +8,8 @@ vec3 random_not_in_unit_sphere()
 	vec3 p;
 	do
 	{
-		p = 2.0 * vec3(Utils::_drand48(), Utils::_drand48(), Utils::_drand48()) - vec3(1, 1, 1);
-	} while (p.squared_length() >= 1.0);
+		p = 2.0 * vec3(Utils::random_double(), Utils::random_double(), Utils::random_double()) - vec3(1, 1, 1);
+	} while (dot(p, p) >= 1.0);
 	return p;
 }
 
@@ -43,6 +43,10 @@ class material
 {
 public:
 	virtual bool scatter(const ray &r_in, const hit_record &rec, vec3 &attenuation, ray &scattered) const = 0;
+	virtual vec3 emitted(float u, float v, const vec3 &p) const
+	{
+		return vec3(0, 0, 0);
+	}
 };
 
 #endif

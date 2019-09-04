@@ -70,8 +70,9 @@ int main()
 	vec3 lookat(0, 0, 0);
 	float dist_to_focus = 10.0;
 	float aperture = 0.0;
+	float vfov = 40;
 
-	camera cam(lookfrom, lookat, vec3(0, 1, 0), 20, float(nx) / float(ny), aperture, dist_to_focus, 0.0, 1.0);
+	camera cam(lookfrom, lookat, vec3(0, 1, 0), vfov, float(nx) / float(ny), aperture, dist_to_focus, 0.0, 1.0);
 
 	unsigned char *data = new unsigned char[nx * ny * n];
 	int cnt = 0;
