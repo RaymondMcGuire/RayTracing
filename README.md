@@ -1,7 +1,5 @@
 # Ray Tracing
 
-just for self-learning
-
 ## Setup
 
 mkdir build
